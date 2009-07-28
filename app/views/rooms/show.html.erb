@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @room.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @room.user_id %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @room.height %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @room.width %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%=h @room.length %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%=h @room.floor %>
+</p>
+
+<p>
+  <b>Doors:</b>
+  <%=h @room.doors %>
+</p>
+
+<p>
+  <b>Windows:</b>
+  <%=h @room.windows %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @room.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>

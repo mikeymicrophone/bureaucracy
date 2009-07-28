@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  user_id: 1
+  height: 1.5
+  width: 1.5
+  length: 1.5
+  floor: 1
+  doors: 1
+  windows: 1
+  description: MyText
+
+two:
+  name: MyString
+  user_id: 1
+  height: 1.5
+  width: 1.5
+  length: 1.5
+  floor: 1
+  doors: 1
+  windows: 1
+  description: MyText
