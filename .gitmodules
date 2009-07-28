@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/rspec-rr"]
 	path = vendor/plugins/rspec-rr
 	url = git://github.com/josephwilk/rspec-rr.git
+[submodule "vendor/plugins/open_id_authentication"]
+	path = vendor/plugins/open_id_authentication
+	url = git://github.com/rails/open_id_authentication.git

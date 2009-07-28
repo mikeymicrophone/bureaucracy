@@ -20,6 +20,13 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'authlogic'
+  config.gem "authlogic-oid", :lib => "authlogic_openid"
+  config.gem "ruby-openid", :lib => "openid"
+  config.action_controller.session = {
+    :session_key => '_blog_session',
+    :secret      => 'f3f57b71ef9345ffccd0c4e841d8e74bb2e7d2ef692a5303bb455fea0667a62d30458d17f95766b12906aa6c2a3c29d584a55dd18426ffc04610be49956a51af'
+  }
+  
   config.gem 'andand'
   config.gem 'giraffesoft-resource_controller', :lib => 'resource_controller'
   # Only load the plugins named here, in the order given (default is alphabetical).

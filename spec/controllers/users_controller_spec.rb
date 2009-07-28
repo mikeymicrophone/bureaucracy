@@ -1,5 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
+class UsersController
+  skip_before_filter :require_user
+end
+
 describe UsersController do
 
   def mock_user(stubs={})
@@ -79,8 +83,8 @@ describe UsersController do
       
       it "should expose a newly created user as @user" do
         user = mock_user(:save => true)
-        mock(User).new({'these' => 'params'}){user}
-        post :create, :user => {:these => 'params'}
+        mock(User).new({'login' => 'prince'}){user}
+        post :create, :user => {:login => 'prince'}
         assigns(:user).should equal(mock_user)
       end
 
@@ -97,8 +101,8 @@ describe UsersController do
 
       it "should expose a newly created but unsaved user as @user" do
         user = mock_user(:save => false)
-        stub(User).new({'these' => 'params'}){user}
-        post :create, :user => {:these => 'params'}
+        stub(User).new({'login' => 'prince'}){user}
+        post :create, :user => {:login => 'prince'}
         assigns(:user).should equal(mock_user)
       end
 
@@ -119,8 +123,8 @@ describe UsersController do
 
       it "should update the requested user" do
         mock(User).find("37"){mock_user}
-        mock(mock_user).update_attributes({'these' => 'params'})
-        put :update, :id => "37", :user => {:these => 'params'}
+        mock(mock_user).update_attributes({'login' => 'prince'})
+        put :update, :id => "37", :user => {:login => 'prince'}
       end
 
       it "should expose the requested user as @user" do
@@ -141,8 +145,8 @@ describe UsersController do
 
       it "should update the requested user" do
         mock(User).find("37"){mock_user}
-        mock(mock_user).update_attributes({'these' => 'params'})
-        put :update, :id => "37", :user => {:these => 'params'}
+        mock(mock_user).update_attributes({'login' => 'prince'})
+        put :update, :id => "37", :user => {:login => 'prince'}
       end
 
       it "should expose the user as @user" do
