@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/rspec-rr"]
+	path = vendor/plugins/rspec-rr
+	url = git://github.com/josephwilk/rspec-rr.git
