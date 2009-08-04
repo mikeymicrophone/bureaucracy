@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
   filter_parameter_logging :password, :password_confirmation
+
+  before_filter :load_current_user_into_params, :only => :create
+
+  def load_current_user_into_params
+    params[controller_name.singularize][:user_id] = current_user.id
+  end
   
   private
     def current_user_session
