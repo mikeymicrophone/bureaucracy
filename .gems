@@ -1,4 +1,4 @@
 authlogic
 authlogic-oid
 andand
-giraffesoft-resource_controller
+giraffesoft-resource_controller --source gems.github.com
