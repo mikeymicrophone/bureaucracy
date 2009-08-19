@@ -1,0 +1,22 @@
+body {
+	font-family: Arial;
+	border: solid;
+}
+
+.nav a {
+	padding: 3px;
+	font-size: .96em;
+}
+
+div.login {
+	float:right;
+	padding-right: 10px;
+}
+
+a {
+	color: #539936;
+}
+
+a:visited {
+	color: #99082B;
+}

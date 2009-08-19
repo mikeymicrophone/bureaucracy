@@ -4,6 +4,12 @@
 	<%= javascript_include_tag :defaults %>
 </head>
 <body>
+	<div class='nav'>
+	  <%= ['users', 'rooms'].map { |r| link_to r, '/' + r } %>
+	</div>
+	<div class='login'>
+	<%= login_stuff %>
+	</div>
 	<%= yield %>
 </body>
 </html>
