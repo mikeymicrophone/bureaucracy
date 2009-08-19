@@ -16,7 +16,7 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%=h room.name %></td>
-    <td><%=h room.user.login %></td>
+    <td><%=h room.user.andand.login %></td>
     <td><%=h room.height %></td>
     <td><%=h room.width %></td>
     <td><%=h room.length %></td>

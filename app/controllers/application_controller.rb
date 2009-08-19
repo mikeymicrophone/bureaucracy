@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_current_user_into_params, :only => :create
 
   def load_current_user_into_params
-    params[controller_name.singularize][:user_id] = current_user.id
+    params[controller_name.singularize][:user_id] = current_user.andand.id
   end
   
   private
