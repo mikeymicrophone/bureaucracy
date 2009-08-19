@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090728033650) do
+ActiveRecord::Schema.define(:version => 20090819051047) do
+
+  create_table "belongings", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.float    "weight"
+    t.string   "height"
+    t.string   "width"
+    t.string   "length"
+    t.datetime "purchased_at"
+    t.float    "price"
+    t.integer  "user_id"
+  end
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"

@@ -1,0 +1,35 @@
+<h1>Listing belongings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Purchased at</th>
+    <th>Price</th>
+    <th>Weight</th>
+    <th>Height</th>
+    <th>Length</th>
+    <th>Width</th>
+    <th>User</th>
+  </tr>
+
+<% @belongings.each do |belonging| %>
+  <tr>
+    <td><%=h belonging.name %></td>
+    <td><%=h belonging.description %></td>
+    <td><%=h belonging.purchased_at %></td>
+    <td><%=h belonging.price %></td>
+    <td><%=h belonging.weight %></td>
+    <td><%=h belonging.height %></td>
+    <td><%=h belonging.length %></td>
+    <td><%=h belonging.width %></td>
+    <td><%=h belonging.user.andand.login %></td>
+    <td><%= link_to 'Show', belonging %></td>
+    <td><%= link_to 'Edit', edit_belonging_path(belonging) if belonging.user_id == current_user.andand.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New belonging', new_belonging_path %>

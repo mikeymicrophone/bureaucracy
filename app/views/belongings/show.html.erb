@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @belonging.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @belonging.description %>
+</p>
+
+<p>
+  <b>Purchased at:</b>
+  <%=h @belonging.purchased_at %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @belonging.price %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @belonging.weight %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @belonging.height %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%=h @belonging.length %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @belonging.width %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @belonging.user.andand.login %>
+</p>
+
+
+<%= link_to 'Edit', edit_belonging_path(@belonging) %> |
+<%= link_to 'Back', belongings_path %>
