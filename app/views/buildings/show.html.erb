@@ -18,6 +18,10 @@
   <%=h @building.floors %>
 </p>
 
+<% @building.rooms.each do |r| %>
+  <%= link_to r.name, r %><br>
+<% end %>
+
 
 <%= link_to 'Edit', edit_building_path(@building) %> |
 <%= link_to 'Back', buildings_path %>

@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <b>Building:</b>
+  <%= link_to @room.building.name, @room.building %>
+</p>
+
+<p>
   <b>User:</b>
   <%=h @room.user.andand.login %>
 </p>
