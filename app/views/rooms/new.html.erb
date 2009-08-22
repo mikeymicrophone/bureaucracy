@@ -8,6 +8,10 @@
     <%= f.text_field :name %>
   </p>
   <p>
+	<%= f.label :building_id %><br>
+	<%= f.select :building_id, Building.all.map { |b| [b.name, b.id]}, :include_blank => true %>
+  </p>
+  <p>
     <%= f.label :height %><br />
     <%= f.text_field :height %>
   </p>
