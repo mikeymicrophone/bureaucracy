@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  room_id: 1
+  belonging_id: 1
+  current: false
+
+two:
+  room_id: 1
+  belonging_id: 1
+  current: false

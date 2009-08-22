@@ -1,0 +1,24 @@
+<h1>Editing placement</h1>
+
+<% form_for(@placement) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :room_id %><br />
+    <%= f.select :room_id, Room.all.map { |r| [r.name, r.id]} %>
+  </p>
+  <p>
+    <%= f.label :belonging_id %><br />
+    <%= f.select :belonging_id, Belonging.all.map { |b| [b.name, b.id]} %>
+  </p>
+  <p>
+    <%= f.label :current %><br />
+    <%= f.check_box :current %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @placement %> |
+<%= link_to 'Back', placements_path %>

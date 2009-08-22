@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090822231713) do
+ActiveRecord::Schema.define(:version => 20090822233058) do
 
   create_table "belongings", :force => true do |t|
     t.text     "name"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(:version => 20090822231713) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
+  end
+
+  create_table "placements", :force => true do |t|
+    t.integer  "room_id"
+    t.integer  "belonging_id"
+    t.integer  "user_id"
+    t.boolean  "current",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rooms", :force => true do |t|

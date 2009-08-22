@@ -1,0 +1,24 @@
+<h1>Listing placements</h1>
+
+<table>
+  <tr>
+    <th>Room</th>
+    <th>Belonging</th>
+    <th>Current</th>
+  </tr>
+
+<% @placements.each do |placement| %>
+  <tr>
+    <td><%=h placement.room_id %></td>
+    <td><%=h placement.belonging_id %></td>
+    <td><%=h placement.current %></td>
+    <td><%= link_to 'Show', placement %></td>
+    <td><%= link_to 'Edit', edit_placement_path(placement) %></td>
+    <td><%= link_to 'Destroy', placement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New placement', new_placement_path %>

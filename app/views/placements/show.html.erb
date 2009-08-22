@@ -1,0 +1,18 @@
+<p>
+  <b>Room:</b>
+  <%=h @placement.room.name %>
+</p>
+
+<p>
+  <b>Belonging:</b>
+  <%=h @placement.belonging.name %>
+</p>
+
+<p>
+  <b>Current:</b>
+  <%=h @placement.current %>
+</p>
+
+
+<%= link_to 'Edit', edit_placement_path(@placement) %> |
+<%= link_to 'Back', placements_path %>
