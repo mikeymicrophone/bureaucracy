@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  storage_unit_id: 1
+  belonging_id: 1
+
+two:
+  storage_unit_id: 1
+  belonging_id: 1

@@ -1,0 +1,1 @@
+Dir.glob("#{RAILS_ROOT}/lib/extensions/*").each { |f| load f }

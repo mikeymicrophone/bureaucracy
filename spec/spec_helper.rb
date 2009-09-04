@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_
 require 'spec/autorun'
 require 'spec/rails'
 require 'spec/rr'
+require File.dirname(__FILE__) + "/../spec/blueprints"
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -45,6 +46,7 @@ Spec::Runner.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   config.mock_with :rr
+  require "authlogic/test_case"
   #
   # == Notes
   #

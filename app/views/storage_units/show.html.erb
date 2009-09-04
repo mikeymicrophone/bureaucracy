@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @storage_unit.name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @storage_unit.parent_id %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @storage_unit.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @storage_unit.height %>
+</p>
+
+<p>
+  <b>Depth:</b>
+  <%=h @storage_unit.depth %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @storage_unit.user.login %>
+</p>
+
+
+<%= link_to 'Edit', edit_storage_unit_path(@storage_unit) %> |
+<%= link_to 'Back', storage_units_path %>

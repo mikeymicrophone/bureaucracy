@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RoomsController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_room(stubs={})
     @mock_room ||= mock_model(Room, stubs)
+  end
+
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -79,7 +85,7 @@ describe RoomsController do
       
       it "should expose a newly created room as @room" do
         room = mock_room(:save => true)
-        mock(Room).new({'these' => 'params'}){room}
+        mock(Room).new({'these' => 'params', 'user_id' => 1}){room}
         post :create, :room => {:these => 'params'}
         assigns(:room).should equal(mock_room)
       end
@@ -97,7 +103,7 @@ describe RoomsController do
 
       it "should expose a newly created but unsaved room as @room" do
         room = mock_room(:save => false)
-        stub(Room).new({'these' => 'params'}){room}
+        stub(Room).new({'these' => 'params', 'user_id' => 1}){room}
         post :create, :room => {:these => 'params'}
         assigns(:room).should equal(mock_room)
       end
@@ -113,7 +119,7 @@ describe RoomsController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 

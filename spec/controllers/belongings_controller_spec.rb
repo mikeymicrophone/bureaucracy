@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BelongingsController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_belonging(stubs={})
     @mock_belonging ||= mock_model(Belonging, stubs)
+  end
+
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -79,7 +85,7 @@ describe BelongingsController do
       
       it "should expose a newly created belonging as @belonging" do
         belonging = mock_belonging(:save => true)
-        mock(Belonging).new({'these' => 'params'}){belonging}
+        mock(Belonging).new({'these' => 'params', 'user_id' => 1}){belonging}
         post :create, :belonging => {:these => 'params'}
         assigns(:belonging).should equal(mock_belonging)
       end
@@ -97,7 +103,7 @@ describe BelongingsController do
 
       it "should expose a newly created but unsaved belonging as @belonging" do
         belonging = mock_belonging(:save => false)
-        stub(Belonging).new({'these' => 'params'}){belonging}
+        stub(Belonging).new({'these' => 'params', 'user_id' => 1}){belonging}
         post :create, :belonging => {:these => 'params'}
         assigns(:belonging).should equal(mock_belonging)
       end
@@ -113,7 +119,7 @@ describe BelongingsController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 

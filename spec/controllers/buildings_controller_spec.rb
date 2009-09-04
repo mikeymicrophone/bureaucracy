@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BuildingsController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_building(stubs={})
     @mock_building ||= mock_model(Building, stubs)
+  end
+
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -79,7 +85,7 @@ describe BuildingsController do
       
       it "should expose a newly created building as @building" do
         building = mock_building(:save => true)
-        mock(Building).new({'these' => 'params'}){building}
+        mock(Building).new({'these' => 'params', 'user_id' => 1}){building}
         post :create, :building => {:these => 'params'}
         assigns(:building).should equal(mock_building)
       end
@@ -97,7 +103,7 @@ describe BuildingsController do
 
       it "should expose a newly created but unsaved building as @building" do
         building = mock_building(:save => false)
-        stub(Building).new({'these' => 'params'}){building}
+        stub(Building).new({'these' => 'params', 'user_id' => 1}){building}
         post :create, :building => {:these => 'params'}
         assigns(:building).should equal(mock_building)
       end
@@ -113,7 +119,7 @@ describe BuildingsController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 

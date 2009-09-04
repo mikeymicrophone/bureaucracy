@@ -1,0 +1,20 @@
+<h1>Editing storage</h1>
+
+<% form_for(@storage) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :storage_unit_id %><br />
+    <%= f.select :storage_unit_id, current_user.storage_units.map_name_and_id %>
+  </p>
+  <p>
+    <%= f.label :belonging_id %><br />
+    <%= f.select :belonging_id, current_user.belongings.map_name_and_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @storage %> |
+<%= link_to 'Back', storages_path %>

@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe PlacementsController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_placement(stubs={})
     @mock_placement ||= mock_model(Placement, stubs)
+  end
+
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -79,7 +85,7 @@ describe PlacementsController do
       
       it "should expose a newly created placement as @placement" do
         placement = mock_placement(:save => true)
-        mock(Placement).new({'these' => 'params'}){placement}
+        mock(Placement).new({'these' => 'params', 'user_id' => 1}){placement}
         post :create, :placement => {:these => 'params'}
         assigns(:placement).should equal(mock_placement)
       end
@@ -97,7 +103,7 @@ describe PlacementsController do
 
       it "should expose a newly created but unsaved placement as @placement" do
         placement = mock_placement(:save => false)
-        stub(Placement).new({'these' => 'params'}){placement}
+        stub(Placement).new({'these' => 'params', 'user_id' => 1}){placement}
         post :create, :placement => {:these => 'params'}
         assigns(:placement).should equal(mock_placement)
       end
@@ -113,7 +119,7 @@ describe PlacementsController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 

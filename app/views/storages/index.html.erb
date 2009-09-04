@@ -1,0 +1,22 @@
+<h1>Listing storages</h1>
+
+<table>
+  <tr>
+    <th>Storage unit</th>
+    <th>Belonging</th>
+  </tr>
+
+<% @storages.each do |storage| %>
+  <tr>
+    <td><%=h storage.storage_unit_id %></td>
+    <td><%=h storage.belonging_id %></td>
+    <td><%= link_to 'Show', storage %></td>
+    <td><%= link_to 'Edit', edit_storage_path(storage) %></td>
+    <td><%= link_to 'Destroy', storage, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New storage', new_storage_path %>

@@ -5,9 +5,15 @@ class UsersController
 end
 
 describe UsersController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_user(stubs={})
     @mock_user ||= mock_model(User, stubs)
+  end
+  
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -117,7 +123,7 @@ describe UsersController do
     
   end
 
-  describe "responding to PUT udpate" do
+  describe "responding to PUT update" do
 
     describe "with valid params" do
 

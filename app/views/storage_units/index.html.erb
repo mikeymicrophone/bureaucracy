@@ -1,0 +1,30 @@
+<h1>Listing storage_units</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Parent</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Depth</th>
+    <th>User</th>
+  </tr>
+
+<% @storage_units.each do |storage_unit| %>
+  <tr>
+    <td><%=h storage_unit.name %></td>
+    <td><%=h storage_unit.parent_id %></td>
+    <td><%=h storage_unit.width %></td>
+    <td><%=h storage_unit.height %></td>
+    <td><%=h storage_unit.depth %></td>
+    <td><%=h storage_unit.user_id %></td>
+    <td><%= link_to 'Show', storage_unit %></td>
+    <td><%= link_to 'Edit', edit_storage_unit_path(storage_unit) %></td>
+    <td><%= link_to 'Destroy', storage_unit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New storage_unit', new_storage_unit_path %>
