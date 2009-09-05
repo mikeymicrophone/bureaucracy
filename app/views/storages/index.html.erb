@@ -8,11 +8,10 @@
 
 <% @storages.each do |storage| %>
   <tr>
-    <td><%=h storage.storage_unit_id %></td>
-    <td><%=h storage.belonging_id %></td>
+    <td><%= link_to_name storage.storage_unit %></td>
+    <td><%= link_to_name storage.belonging %></td>
     <td><%= link_to 'Show', storage %></td>
     <td><%= link_to 'Edit', edit_storage_path(storage) %></td>
-    <td><%= link_to 'Destroy', storage, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
