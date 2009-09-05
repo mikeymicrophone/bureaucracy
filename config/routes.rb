@@ -1,7 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :users, :rooms, :belongings, :buildings, :placements, :storage_units, :storages
+  map.resources :rooms, :belongings, :placements, :storages
   map.resources :rooms do |room|
     room.resources :belongings
+  end
+  map.resources :storage_units do |storage_unit|
+    storage_unit.resources :belongings
+  end
+  map.resources :buildings do |building|
+    building.resources :rooms, :belongings
+  end
+  map.resources :users do |user|
+    user.resources :belongings, :buildings
   end
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'

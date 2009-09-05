@@ -2,7 +2,11 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.xml
   def index
-    @rooms = Room.all
+    @rooms = if params[:building_id]
+      Building.find(params[:building_id]).rooms
+    else
+      Room.all
+    end
   
     respond_to do |format|
       format.html # index.html.erb

@@ -24,7 +24,7 @@ class PlacementsController < ApplicationController
   # GET /placements/new
   # GET /placements/new.xml
   def new
-    @placement = Placement.new
+    @placement = Placement.new params[:placement]
 
     respond_to do |format|
       format.html # new.html.erb

@@ -2,7 +2,11 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.xml
   def index
-    @buildings = Building.all
+    @buildings = if params[:user_id]
+      User.find(params[:user_id]).storage_buildings
+    else
+      Building.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

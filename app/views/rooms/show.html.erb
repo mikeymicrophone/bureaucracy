@@ -5,8 +5,10 @@
 
 <p>
   <b>Building:</b>
-  <%= link_to @room.building.name, @room.building %>
+  <%= link_to_name @room.building %>
 </p>
+
+<%= link_to pluralize(@room.belongings.count, 'belonging'), room_belongings_path(@room) %>
 
 <p>
   <b>User:</b>

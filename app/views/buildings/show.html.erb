@@ -3,6 +3,9 @@
   <%=h @building.name %>
 </p>
 
+<%= link_to pluralize(@building.rooms.count, 'room'), building_rooms_path(@building) %>
+<%= link_to pluralize(@building.belongings.count, 'belonging'), building_belongings_path(@building) %>
+
 <p>
   <b>Address:</b>
   <%=h @building.address %>

@@ -3,6 +3,14 @@
   <%=h @storage_unit.name %>
 </p>
 
+<%= link_to pluralize(@storage_unit.belongings.count, 'belonging'), storage_unit_belongings_path(@storage_unit) %>
+
+<% @storage_unit.placements.each do |p| %>
+  <%= link_to 'in ' + p.room.name, p.room %>
+<% end %>
+
+<%= link_to 'place in a room', new_placement_path(:placement => {:belonging_id => @storage_unit.belonging_id}) %>
+
 <p>
   <b>Parent:</b>
   <%=h @storage_unit.parent_id %>

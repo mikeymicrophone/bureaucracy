@@ -27,3 +27,21 @@ StorageUnit.blueprint do
   name { Faker::Lorem.words(1) }
   user { find_or_make(User) }
 end
+
+Room.blueprint do
+  name { Faker::Lorem.words(1) }
+end
+
+Placement.blueprint do
+  room { Room.make }
+  belonging { Belonging.make }
+end
+
+Belonging.blueprint do
+  name { Faker::Lorem.words(1) }
+end
+
+Storage.blueprint do
+  storage_unit { StorageUnit.make }
+  belonging { Belonging.make }
+end

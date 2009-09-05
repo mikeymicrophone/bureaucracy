@@ -2,7 +2,17 @@ class BelongingsController < ApplicationController
   # GET /belongings
   # GET /belongings.xml
   def index
-    @belongings = Belonging.all
+    @belongings = if params[:user_id]
+      User.find(params[:user_id]).belongings
+    elsif params[:building_id]
+      Building.find(params[:building_id]).rooms.map(&:belongings).flatten
+    elsif params[:room_id]
+      Room.find(params[:room_id]).belongings
+    elsif params[:storage_unit_id]
+      StorageUnit.find(params[:storage_unit_id]).belongings
+    else
+      Belonging.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,3 +1,6 @@
 
+<%= link_to pluralize(@user.belongings.count, 'belonging'), user_belongings_path(@user) %>
+<%= link_to 'buildings where they are kept', user_buildings_path(@user) %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
