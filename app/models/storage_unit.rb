@@ -13,4 +13,8 @@ class StorageUnit < ActiveRecord::Base
   def placements
     belonging.placements
   end
+  
+  def room
+    belonging.room
+  end
 end

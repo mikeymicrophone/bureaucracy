@@ -45,3 +45,7 @@ Storage.blueprint do
   storage_unit { StorageUnit.make }
   belonging { Belonging.make }
 end
+
+Building.blueprint do
+  name { Faker::Lorem.words(1)}
+end

@@ -19,6 +19,23 @@ describe BuildingsController do
       get :index
       assigns[:buildings].should == [mock_building]
     end
+    
+    describe "with user_id param specified" do
+      before do
+        @user = User.make
+        @building = Building.make
+        @room = Room.make(:building => @building)
+        @belonging = @user.belongings.make
+        @belonging.place_in(@room)
+      end
+      
+      it 'should find buildings that user stores things in' do
+        mock(User).find(anything) { @user }
+        mock.proxy(@user).storage_buildings
+        get :index, :user_id => @user.id
+        assigns[:buildings].should == [@building]
+      end
+    end
 
     describe "with mime type of xml" do
   
