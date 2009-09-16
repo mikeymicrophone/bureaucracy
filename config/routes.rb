@@ -12,6 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :belongings, :buildings
   end
+  map.resources :friendships
+  map.resources :lists
+  map.resources :list_items
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'

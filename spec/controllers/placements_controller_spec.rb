@@ -62,7 +62,7 @@ describe PlacementsController do
     it "should expose a new placement as @placement" do
       #We need to call new before any mocking
       mock_placement
-      mock(Placement).new{mock_placement}
+      mock(Placement).new(anything){mock_placement}
       get :new
       assigns[:placement].should equal(mock_placement)
     end

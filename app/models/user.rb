@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :rooms
   has_many :storage_units
   has_many :storages
+  has_many :lists
+  
+  after_create :create_default_lists
   
   def storage_buildings
     belongings.map(&:building).compact.uniq
@@ -15,5 +18,10 @@ class User < ActiveRecord::Base
   
   def storage_rooms
     belongings.map(&:room).uniq
+  end
+  
+  def create_default_lists
+    lists.create(:name => 'Things I want to use more')
+    lists.create(:name => 'Things I want to use this weekend')
   end
 end

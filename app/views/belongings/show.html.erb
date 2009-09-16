@@ -3,7 +3,9 @@
   <%=h @belonging.name %>
 </p>
 
-<%= link_to_name @belonging.storage_unit%>
+<%= link_to_name @belonging.storage_unit %><br>
+<%= link_to 'I want to use this more', list_items_path(:list_item => {:list_id => List.find_by_user_id_and_name(current_user.id, 'Things I want to use more'), :belonging_id => @belonging}), :method => :post %><br>
+<%= link_to 'I want to use this on this weekend', list_items_path(:list_item => {:list_id => List.find_by_user_id_and_name(current_user.id, 'Things I want to use this weekend'), :belonging_id => @belonging}), :method => :post %>
 
 <p>
   <b>Description:</b>

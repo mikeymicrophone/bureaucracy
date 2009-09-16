@@ -1,0 +1,11 @@
+<p>
+  <%=h @list.name %>
+</p>
+<ul>
+<% @list.list_items.each do |i| %>
+  <li><%= link_to_name i.belonging %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

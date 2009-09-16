@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StoragesController do
+  include Authlogic::TestCase
+  setup :activate_authlogic
 
   def mock_storage(stubs={})
     @mock_storage ||= mock_model(Storage, stubs)
+  end
+  
+  before do
+    UserSession.create User.make
   end
   
   describe "responding to GET index" do
@@ -79,7 +85,7 @@ describe StoragesController do
       
       it "should expose a newly created storage as @storage" do
         storage = mock_storage(:save => true)
-        mock(Storage).new({'these' => 'params'}){storage}
+        mock(Storage).new({'these' => 'params', 'user_id' => 1}){storage}
         post :create, :storage => {:these => 'params'}
         assigns(:storage).should equal(mock_storage)
       end
@@ -97,7 +103,7 @@ describe StoragesController do
 
       it "should expose a newly created but unsaved storage as @storage" do
         storage = mock_storage(:save => false)
-        stub(Storage).new({'these' => 'params'}){storage}
+        stub(Storage).new({'these' => 'params', 'user_id' => 1}){storage}
         post :create, :storage => {:these => 'params'}
         assigns(:storage).should equal(mock_storage)
       end

@@ -2,7 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StorageUnit do
   it 'should create a belonging during creation' do
-    mock(Belonging).create(anything)
+    mock.proxy(Belonging).find(:first, anything)
+    mock.proxy(Belonging).new
     StorageUnit.create StorageUnit.plan
   end
   
