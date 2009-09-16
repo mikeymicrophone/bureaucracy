@@ -49,3 +49,16 @@ end
 Building.blueprint do
   name { Faker::Lorem.words(1)}
 end
+
+Friendship.blueprint do
+  user { User.make }
+  friend { User.make }
+end
+
+Friendship.blueprint(:accepted) do
+  status 'accepted'
+end
+
+Friendship.blueprint(:rejected) do
+  status 'rejected'
+end

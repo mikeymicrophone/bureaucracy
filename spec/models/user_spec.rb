@@ -44,4 +44,24 @@ describe User do
       @user.storage_buildings.should == [@building]
     end
   end
+  
+  describe 'friendships' do
+    before do
+      @user = User.make
+      @friend_requestor = User.make
+      @friend_accepter = User.make
+    end
+    
+    it 'should find both friends who requested and those who were requested' do
+      Friendship.make(:accepted, :user => @user, :friend => @friend_accepter)
+      Friendship.make(:accepted, :user => @friend_requestor, :friend => @user)
+      @user.friends.should == [@friend_accepter, @friend_requestor]
+    end
+    
+    it 'should know if it is friends with a user' do
+      Friendship.make(:accepted, :user => @user, :friend => @friend_accepter)
+      @user.friends_with?(@friend_accepter).should be
+      @friend_accepter.friends_with?(@user).should be
+    end
+  end
 end

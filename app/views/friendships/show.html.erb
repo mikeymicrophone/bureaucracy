@@ -1,11 +1,11 @@
 <p>
   <b>User:</b>
-  <%=h @friendship.user_id %>
+  <%= link_to_name @friendship.user %>
 </p>
 
 <p>
   <b>Friend:</b>
-  <%=h @friendship.friend_id %>
+  <%= link_to_name @friendship.friend %>
 </p>
 
 <p>
