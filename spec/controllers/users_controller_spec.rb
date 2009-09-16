@@ -70,7 +70,7 @@ describe UsersController do
   describe 'logged in actions' do
   
     before do
-      UserSession.create User.make
+      UserSession.create(@current_user = User.make)
     end
   
     describe "responding to GET index" do

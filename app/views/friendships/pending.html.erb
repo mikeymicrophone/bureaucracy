@@ -1,0 +1,5 @@
+<% @friendships.each do |f| %>
+  <%= link_to_name f.user %>
+  <%= link_to 'accept', accept_friendship_path(f) %>
+  <%= link_to 'reject', reject_friendship_path(f) %>
+<% end %>

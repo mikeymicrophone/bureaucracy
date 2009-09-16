@@ -1,8 +1,22 @@
 class FriendshipsController < ApplicationController
+  def pending
+    @friendships = current_user.requested_friendships.pending
+  end
+  
+  def accept
+    Friendship.find(params[:id]).accept
+    redirect_to :action => 'pending'
+  end
+  
+  def reject
+    Friendship.find(params[:id]).reject
+    redirect_to :action => 'pending'
+  end
+
   # GET /friendships
   # GET /friendships.xml
   def index
-    @friendships = Friendship.all
+    @friendships = Friendship.accepted
 
     respond_to do |format|
       format.html # index.html.erb

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :belongings, :buildings
   end
-  map.resources :friendships
+  map.resources :friendships, :collection => {:pending => :get}, :member => {:accept => :put, :reject => :put}
   map.resources :lists
   map.resources :list_items
   map.resource :user_session

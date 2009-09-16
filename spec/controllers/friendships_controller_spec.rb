@@ -9,9 +9,18 @@ describe FriendshipsController do
   end
   
   before do
-    UserSession.create User.make
+    UserSession.create(@current_user = User.make)
   end
   
+  describe 'pending' do
+    it 'should display pending friend requests' do
+      Friendship.make(:user => User.make, :friend => @current_user)
+      Friendship.make(:user => User.make, :friend => @current_user)
+      get :pending
+      assigns[:friendships].length.should == 2
+    end
+  end
+
   describe "responding to GET index" do
 
     it "should expose all friendships as @friendships" do
